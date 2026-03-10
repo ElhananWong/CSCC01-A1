@@ -24,3 +24,8 @@ sequenceDiagram
     RS->>User: text;
     deactivate RS;
 ```
+changes:
+- added BaseChatModel, detailed method calls and return types
+
+what prompted change:
+- looked at each missing step from previous to see what calls what and return values
