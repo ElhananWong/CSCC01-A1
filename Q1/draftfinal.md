@@ -12,21 +12,21 @@ sequenceDiagram
     RS->>CPT: <<async>><br>invoke(input: RunInput, options?: RunnableConfig);
     activate CPT;
     CPT->>CPT: <<async>><br>formatMessages(values: TypedPromptInputValues<RunInput>);
-    CPT->>RS: resultMessages [Messages];
+    CPT->>RS: resultMessages: BaseMessage[];
 
     RS->>BCM: <<aync>><br>invoke(input: RunInput, options?: RunnableConfig)
     activate BCM
     BCM->>BCM: <<async>><br>_generatemessages(BaseMessage[],<br>options: this["ParsedCallOptions"],<br>runManager?: CallbackManagerForLLMRun)
-    BCM->>RS: AIMessage
+    BCM->>RS: AIMessage: ChatResult;
     deactivate BCM
     
     RS->>SOP: <<async>><br>invoke(input: RunInput, options?: RunnableConfig);
     activate SOP;
     SOP->>SOP: parse(text: string);
-    SOP->>RS: text;
+    SOP->>RS: text: string;
     deactivate SOP;
     
-    RS->>User: text;
+    RS->>User: text: string;
     deactivate RS;
 ```
 changes:
