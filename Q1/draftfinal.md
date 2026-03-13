@@ -3,7 +3,7 @@ sequenceDiagram
     actor User;
     participant RS as RunnableSequence;
     participant CPT as ChatPromptTemplate;
-    participant BCM as BaseChatModel;
+    participant BCM as ChatOpenAI (BaseChatModel);
     participant SOP as StringOutputParser;
 
     User->>RS: chain.invoke({ topic: "ice cream" });
